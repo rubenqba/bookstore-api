@@ -1,0 +1,37 @@
+{
+  "name": "bookstore-api",
+  "version": "1.0.0",
+  "description": "Bookstore API",
+  "main": "src/server.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/rubenqba/bookstore-api.git"
+  },
+  "keywords": [
+    "gyfted",
+    "nodejs",
+    "certification"
+  ],
+  "author": "Ruben Bresler <ruben.bresler@gyfted.shop>",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/rubenqba/bookstore-api/issues"
+  },
+  "homepage": "https://github.com/rubenqba/bookstore-api#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "joi": "^17.6.3",
+    "keycloak-connect": "^19.0.3",
+    "mongoose": "^6.6.6"
+  },
+  "engines": {
+    "node": "16.x"
+  }
+}
