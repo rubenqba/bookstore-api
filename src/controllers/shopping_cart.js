@@ -1,8 +1,6 @@
 const cart_service = require("../services/cart_service");
 const Validators = require("./validators");
 
-
-
 exports.get_cart = (req, res) => {
     console.log(`user_id: ${req.kauth.grant.access_token.content.sub}`)
     const user_id = req.kauth.grant.access_token.content.sub;

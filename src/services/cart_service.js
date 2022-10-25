@@ -46,6 +46,7 @@ class CartService {
         }
         
         cart.products = books;
+        cart.total = books.map(b => b.price * b.qty).reduce((accumulator, subtotal) => accumulator + subtotal, 0)
         return cart.save();
     };
 

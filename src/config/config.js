@@ -1,6 +1,6 @@
 require('dotenv').config()
 
-let a = ['PORT', 'DB_NAME', 'DB_USER', 'DB_PASS', 'KEYCLOAK_SERVER', 'KEYCLOAK_REALM', 'KEYCLOAK_CLIENT_ID'/* , 'KEYCLOAK_CLIENT_SECRET' */]
+let a = ['PORT', 'DB_URL', 'KEYCLOAK_SERVER', 'KEYCLOAK_REALM', 'KEYCLOAK_CLIENT_ID'/* , 'KEYCLOAK_CLIENT_SECRET' */]
 a.forEach((name) => {
     if (!process.env[name]) {
         throw new Error(`Environment variable ${name} is missing`)
