@@ -17,7 +17,7 @@ class CartService {
     closeCart = async (user_id) => {
         const cart = await _getUserPendingCart(user_id);
         if (!cart) {
-            throw Error("Current user have no active shopping cart");
+            throw Error("cart_not_found");
         }
         cart.status = "completed";
         return cart.save();
@@ -26,7 +26,7 @@ class CartService {
     updateBook = async (user_id, book) => {
         const cart = await _getUserPendingCart(user_id);
         if (!cart) {
-            throw Error("Current user have no active shopping cart");
+            throw Error("cart_not_found");
         }
 
         const current = cart.get('products');
@@ -46,13 +46,14 @@ class CartService {
         }
         
         cart.products = books;
+        cart.total = books.map(b => b.price * b.qty).reduce((accumulator, subtotal) => accumulator + subtotal, 0)
         return cart.save();
     };
 
     removeBookFromCart = async (user_id, book_id) => {
         const cart = await _getUserPendingCart(user_id);
         if (!cart) {
-            throw Error("Current user have no active shopping cart");
+            throw Error("cart_not_found");
         }
 
         const books = cart.get('products').filter(b => b.product !== book_id);        

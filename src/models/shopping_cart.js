@@ -5,7 +5,7 @@ const Types = mongoose.Schema.Types;
 
 function translateDecimals(value) {
     if (typeof value !== 'undefined') {
-        return parseFloat(value.toString());
+        return value.toString();
     }
     return value;
 }
@@ -26,6 +26,8 @@ const BookSelectionSchema = mongoose.Schema({
     price: {
         type: Types.Decimal128,
         required: true,
+        // get: v => mongoose.Types.Decimal128.fromString(v.toFixed(4)),
+        set: v => mongoose.Types.Decimal128.fromString(v.toFixed(4)),
         transform: translateDecimals
     },
     qty: Types.Number,
