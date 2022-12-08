@@ -1,11 +1,11 @@
 require('dotenv').config()
 
-let a = ['PORT', 'DB_NAME', 'DB_USER', 'DB_PASS', 'KEYCLOAK_SERVER', 'KEYCLOAK_REALM', 'KEYCLOAK_CLIENT_ID'/* , 'KEYCLOAK_CLIENT_SECRET' */]
-a.forEach((name) => {
+const vars = ['DB_NAME', 'DB_USER', 'DB_PASS', 'KEYCLOAK_SERVER', 'KEYCLOAK_REALM', 'KEYCLOAK_CLIENT_ID'/* , 'KEYCLOAK_CLIENT_SECRET' */]
+vars.forEach((name) => {
     if (!process.env[name]) {
         throw new Error(`Environment variable ${name} is missing`)
     }
-})
+});
 
 const config = {
     env: process.env.NODE_ENV,
@@ -14,7 +14,7 @@ const config = {
         enabled: process.env.BOOLEAN ? process.env.BOOLEAN.toLowerCase() === 'true' : false
     },
     server: {
-        port: Number(process.env.PORT)
+        port: Number(process.env.PORT || 8081)
     },
     session: {
         secret: process.env.SESSION_SECRET || (Math.random() + 1).toString(36).substring(7),

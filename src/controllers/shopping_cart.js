@@ -1,8 +1,6 @@
 const cart_service = require("../services/cart_service");
 const Validators = require("./validators");
 
-
-
 exports.get_cart = (req, res) => {
     console.log(`user_id: ${req.kauth.grant.access_token.content.sub}`)
     const user_id = req.kauth.grant.access_token.content.sub;
@@ -45,7 +43,8 @@ exports.add_book = (req, res) => {
 }
 
 exports.remove_book = (req, res) => {
-    const user_id = "3bf6e21a-36c7-4d3e-9199-4047e949e3ad"; //req.kauth.grant.access_token.content.sub;
+    console.log(`user_id: ${req.kauth.grant.access_token.content.sub}`)
+    const user_id = req.kauth.grant.access_token.content.sub;
     const book_id = req.params.book;
 
     cart_service.removeBookFromCart(user_id, book_id)
